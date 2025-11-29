@@ -1116,6 +1116,7 @@ select.glass-input {
         transform: translateY(-10px);
     }
 
+    /* Footer Refinements */
     .footer-container {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -1124,6 +1125,19 @@ select.glass-input {
 
     .footer-col p {
         margin: 0 auto;
+    }
+
+    .footer-logo {
+        justify-content: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .social-links a {
+        width: 35px;
+        height: 35px;
     }
 
     /* Success Stories Mobile */
