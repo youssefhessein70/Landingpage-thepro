@@ -467,7 +467,7 @@ img {
 .image-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 6rem;
     align-items: center;
 }
 
@@ -846,6 +846,205 @@ img {
 select.glass-input {
     appearance: none;
     cursor: pointer;
+}
+
+/* --- Reviews Marquee Section (شريط الآراء المتحرك) --- */
+.reviews {
+    padding: 4rem 0;
+    overflow: hidden;
+    /* إخفاء الزيادات */
+    background: transparent;
+}
+
+.marquee-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    /* تأثير تلاشي في الجوانب */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-track {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    /* العرض يتمدد حسب المحتوى */
+    animation: scroll 40s linear infinite;
+    /* حركة مستمرة */
+}
+
+/* حركة الأنيميشن */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(50%);
+    }
+
+    /* نحرك 50% لأننا كررنا العناصر مرتين */
+}
+
+/* تصميم الكارت الزجاجي */
+/* --- Reviews Slider Styles --- */
+.reviews-slider-wrapper {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+    /* مسافة عشان الزراير متبقاش لازقة */
+}
+
+.reviews-track-container {
+    overflow: hidden;
+    /* عشان يخفي الكروت الزيادة */
+    padding: 20px 0;
+}
+
+.reviews-track {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+    gap: 0;
+    /* المسافات هنعملها بالبادينج */
+}
+
+.review-slide {
+    list-style: none;
+    padding: 0 10px;
+    /* مسافة بين الكروت */
+    box-sizing: border-box;
+}
+
+/* في الموبايل: الكارت ياخد عرض الشاشة بالكامل */
+.review-slide {
+    min-width: 100%;
+}
+
+/* في الشاشات الكبيرة: يظهر 3 كروت جنب بعض */
+@media (min-width: 992px) {
+    .review-slide {
+        min-width: 33.3333%;
+    }
+}
+
+/* --- Reviews Section CSS --- */
+.reviews-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 50px;
+    /* مسافة للأزرار */
+}
+
+.css-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding-bottom: 20px;
+    scrollbar-width: none;
+    /* إخفاء شريط التمرير */
+    scroll-behavior: smooth;
+}
+
+.css-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.review-card-wrapper {
+    flex: 0 0 auto;
+    width: 100%;
+    /* عرض الموبايل */
+    scroll-snap-align: center;
+}
+
+/* اللابتوب: 3 كروت */
+@media (min-width: 992px) {
+    .review-card-wrapper {
+        width: calc(33.333% - 14px);
+    }
+}
+
+/* التابلت: 2 كارت */
+@media (max-width: 991px) and (min-width: 768px) {
+    .review-card-wrapper {
+        width: calc(50% - 10px);
+    }
+}
+
+/* تنسيق الأزرار */
+.review-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    border: 1px solid var(--primary-purple);
+    color: var(--primary-purple);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+.review-btn:hover {
+    background: var(--primary-purple);
+    color: #fff;
+}
+
+.review-btn.next-btn {
+    right: 0;
+}
+
+.review-btn.prev-btn {
+    left: 0;
+}
+
+/* تنسيق الكارت */
+.review-card {
+    background-color: #F8F5FF;
+    border: 1px solid var(--primary-purple);
+    border-radius: 20px;
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 250px;
+}
+
+.reviewer-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.reviewer-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.reviewer-name {
+    font-weight: 700;
+    color: var(--primary-dark);
+    font-size: 0.95rem;
+}
+
+.reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
 }
 
 /* FAQ Section */
