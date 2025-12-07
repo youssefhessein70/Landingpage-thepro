@@ -38,62 +38,74 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">ابدأ رحلتك الآن</h2>
-                <p class="section-subtitle">سجل لاختبار تحديد المستوى، واحجز جلستك المجانية</p>
+                <p class="section-subtitle">سجل بياناتك للتواصل معك</p>
             </div>
 
             <div class="glass-panel form-container">
-                <h3 class="form-title">تسجيل اختبار تحديد المستوى</h3>
                 <form class="register-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="firstname">الاسم الأول</label>
-                            <input type="text" id="firstname" class="glass-input" placeholder="الاسم الأول">
-                        </div>
-                        <div class="form-group">
-                            <label for="lastname">اسم العائلة</label>
-                            <input type="text" id="lastname" class="glass-input" placeholder="اسم العائلة">
-                        </div>
+
+                    <div class="form-group">
+                        <label for="fullname">اسمك إيه <span style="color: red">*</span></label>
+                        <input type="text" id="fullname" class="glass-input" placeholder="">
                     </div>
 
                     <div class="form-group">
-                        <label for="email">البريد الإلكتروني</label>
-                        <input type="email" id="email" class="glass-input" placeholder="example@email.com">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">رقم الهاتف</label>
+                        <label for="phone">رقم موبايلك <span style="color: red">*</span></label>
                         <div class="phone-input-wrapper">
-                            <span class="country-code">+20</span>
-                            <input type="tel" id="phone" class="glass-input" placeholder="1xxxxxxxxx">
+                            <span class="country-code" style="background: transparent; border: none;">
+                                <img src="https://flagcdn.com/w20/eg.png" alt="Egypt Flag" style="width: 20px;"> +20
+                            </span>
+                            <input type="tel" id="phone" class="glass-input" placeholder="">
                         </div>
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="gender">الجنس</label>
-                            <div class="select-wrapper">
-                                <select id="gender" class="glass-input">
-                                    <option value="" disabled selected>اختر الجنس</option>
-                                    <option value="male">ذكر</option>
-                                    <option value="female">أنثى</option>
-                                </select>
-                                <i class="fa-solid fa-chevron-down select-icon"></i>
+                    <div class="form-group">
+                        <label for="email">الإيميل <span style="color: red">*</span></label>
+                        <input type="email" id="email" class="glass-input" placeholder="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reason">ليه عايز تتعلم إنجليزي؟ <span style="color: red">*</span></label>
+                        <input type="text" id="reason" class="glass-input" placeholder="">
+                    </div>
+
+                    <div class="form-group">
+                        <label>عرفتنا من أي منصة؟ <span style="color: red">*</span></label>
+                        <div class="form-row" style="justify-content: flex-end; gap: 15px; flex-wrap: wrap;">
+
+                            <div style="display: flex; align-items: center; gap: 5px;">
+                                <label for="google" style="margin: 0;">Google</label>
+                                <input type="checkbox" id="google">
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="dob">تاريخ الميلاد</label>
-                            <div class="date-wrapper">
-                                <input type="date" id="dob" class="glass-input">
+
+                            <div style="display: flex; align-items: center; gap: 5px;">
+                                <label for="tiktok" style="margin: 0;">Tiktok</label>
+                                <input type="checkbox" id="tiktok">
                             </div>
+
+                            <div style="display: flex; align-items: center; gap: 5px;">
+                                <label for="instagram" style="margin: 0;">Instagram</label>
+                                <input type="checkbox" id="instagram">
+                            </div>
+
+                            <div style="display: flex; align-items: center; gap: 5px;">
+                                <label for="facebook" style="margin: 0;">Facebook</label>
+                                <input type="checkbox" id="facebook">
+                            </div>
+
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-block btn-lg">تسجيل</button>
+                    <div class="form-group">
+                        <label for="contact-method">طريقة التواصل المفضلة</label>
+                        <input type="text" id="contact-method" class="glass-input" placeholder="">
+                    </div>
+
+                    <button type="submit" href="" class="btn btn-primary btn-block btn-lg">سجل الآن</button>
                 </form>
             </div>
         </div>
     </section>
-
     <!-- Success Stories Section -->
     <!-- Hero Section -->
     <section class="hero" id="hero">
@@ -102,8 +114,6 @@
                 <h1 class="hero-title">تعلم الإنجليزية <br><span class="text-highlight">بالطريقة الصحيحة</span></h1>
                 <p class="hero-subtitle">انضم إلينا اليوم وابدأ رحلتك نحو إتقان اللغة الإنجليزية مع أفضل المدربين
                     والمناهج المعتمدة.</p>
-                <a href="#pricing" class="btn btn-primary btn-lg">اشترك الآن</a>
-
 
                 <div class="hero-stats">
                     <div class="stat-item">
@@ -134,6 +144,7 @@
                     </div>
                 </div>
             </div>
+            <a href="#pricing" class="btn btn-primary btn-lg">اشترك الآن</a>
         </div>
     </section>
 
@@ -190,7 +201,9 @@
                     <p>مكتبة ضخمة من الفيديوهات والملفات الصوتية والتمارين التفاعلية.</p>
                 </div>
             </div>
+            <a href="#register" class="btn btn-primary btn-lg">اشترك الآن</a>
         </div>
+
     </section>
 
     <!-- image Section -->
@@ -206,7 +219,7 @@
                     <li><i class="fa-solid fa-check"></i> بتسمع فيديوهات كتير… بس مش عارف تمارس وتبدأ فعلًا؟</li>
                 </ul>
                 <p class="cta-container">
-                    <a href="#" class="main-btn">
+                    <a href="#register" class="main-btn">
                         لو واحدة من دول مشكلتك ف انت في المكان الصح
                         <br>
                         معانا هتتكلم انجليزي من اول يوم
@@ -273,7 +286,7 @@
                     هتعرف نقاط قوتك والمهارات اللي محتاجة تطوير بشكل دقيق.
                     بنحدد لك المستوى المناسب والكورس الأنسب ليك بالظبط بناءً على تقييمك.</p>
                 <p class="cta-container">
-                    <a href="#" class="main-btn">
+                    <a href="#register" class="main-btn">
                         لاحجز الآن استشارتك الفردية واستعد تبدأ رحلتك في تطوير الإنجليزي!
 
                     </a>
@@ -669,6 +682,7 @@
                     </div>
                 </div>
             </div>
+            <a href="#register" class="btn btn-primary btn-lg">اشترك الآن</a>
         </div>
     </section>
 
