@@ -694,34 +694,43 @@ img {
 /* --- تنسيق المجموعة (الملاحظة + السهم + الزرار) --- */
 /* --- تنسيق الحاوية (عشان السهم ييجي في نص الزرار) --- */
 /* --- الكود الوحيد المسؤول عن السهم والزرار --- */
+.hand-drawn-note {
+    color: red;
+    font-size: larger;
+}
 
 .cta-container {
     display: flex !important;
     flex-direction: column !important;
     /* يرصهم فوق بعض */
     align-items: center !important;
-    /* يسنتر السهم فوق الزرار بالظبط */
+    /* دي أهم واحدة: بتخلي السهم والزرار يتسنتروا أفقي بالنسبة لبعض */
     width: fit-content !important;
-    /* يلم الحاوية على قد حجم الزرار */
-
+    /* يلم الحاوية على قد حجم المحتوى */
     margin-top: 2rem;
+
+    /* لو عايز المجموعة كلها تيجي يمين أو شمال، تحكم فيها بالمارجن هنا */
+    /* مثلاً لو الموقع عربي وعايزها في اليمين */
     margin-right: 0;
-    /* يخلي المجموعة كلها على اليمين مع بداية الكلام */
 }
 
 .arrow-box {
-    margin-bottom: 5px;
-    /* مسافة صغيرة بين السهم والزرار */
+    width: 100%;
+    /* ده بيخلي صندوق السهم ياخد نفس عرض الزرار اللي تحته */
     display: flex;
     justify-content: center;
-    width: 100%;
+    /* يخلي أيقونة السهم في نص الصندوق بالظبط */
+    margin-bottom: 10px;
+    /* مسافة بسيطة بين السهم والزرار */
 }
 
 .arrow-box i {
     color: red !important;
-    /* السهم أحمر */
     font-size: 2rem;
     animation: bounce 2s infinite;
+    /* تأكد إنه مفيش مارجن جانبي للأيقونة نفسها بيلخبط السنترة */
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .main-btn {
