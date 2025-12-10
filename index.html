@@ -33,7 +33,6 @@
             <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
         </div>
     </header>
-    <!-- Registration Form Section -->
     <section class="registration" id="register">
         <div class="container">
             <div class="section-header">
@@ -42,11 +41,11 @@
             </div>
 
             <div class="glass-panel form-container">
-                <form class="register-form">
+                <form class="register-form" name="submit-to-google-sheet">
 
                     <div class="form-group">
                         <label for="fullname">اسمك إيه <span style="color: red">*</span></label>
-                        <input type="text" id="fullname" class="glass-input" placeholder="">
+                        <input type="text" id="fullname" name="Name" class="glass-input" required>
                     </div>
 
                     <div class="form-group">
@@ -55,57 +54,57 @@
                             <span class="country-code" style="background: transparent; border: none;">
                                 <img src="https://flagcdn.com/w20/eg.png" alt="Egypt Flag" style="width: 20px;"> +20
                             </span>
-                            <input type="tel" id="phone" class="glass-input" placeholder="">
+                            <input type="tel" id="phone" name="Phone" class="glass-input" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="email">الإيميل <span style="color: red">*</span></label>
-                        <input type="email" id="email" class="glass-input" placeholder="">
+                        <input type="email" id="email" name="Email" class="glass-input" required>
                     </div>
 
                     <div class="form-group">
                         <label for="reason">ليه عايز تتعلم إنجليزي؟ <span style="color: red">*</span></label>
-                        <input type="text" id="reason" class="glass-input" placeholder="">
+                        <input type="text" id="reason" name="Reason" class="glass-input" required>
                     </div>
 
                     <div class="form-group">
                         <label>عرفتنا من أي منصة؟ <span style="color: red">*</span></label>
                         <div class="form-row" style="justify-content: flex-end; gap: 15px; flex-wrap: wrap;">
-
                             <div style="display: flex; align-items: center; gap: 5px;">
                                 <label for="google" style="margin: 0;">Google</label>
-                                <input type="checkbox" id="google">
+                                <input type="checkbox" id="google" value="Google" class="platform-check">
                             </div>
 
                             <div style="display: flex; align-items: center; gap: 5px;">
                                 <label for="tiktok" style="margin: 0;">Tiktok</label>
-                                <input type="checkbox" id="tiktok">
+                                <input type="checkbox" id="tiktok" value="Tiktok" class="platform-check">
                             </div>
 
                             <div style="display: flex; align-items: center; gap: 5px;">
                                 <label for="instagram" style="margin: 0;">Instagram</label>
-                                <input type="checkbox" id="instagram">
+                                <input type="checkbox" id="instagram" value="Instagram" class="platform-check">
                             </div>
 
                             <div style="display: flex; align-items: center; gap: 5px;">
                                 <label for="facebook" style="margin: 0;">Facebook</label>
-                                <input type="checkbox" id="facebook">
+                                <input type="checkbox" id="facebook" value="Facebook" class="platform-check">
                             </div>
-
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="contact-method">طريقة التواصل المفضلة</label>
-                        <input type="text" id="contact-method" class="glass-input" placeholder="">
+                        <input type="text" id="contact-method" name="ContactMethod" class="glass-input">
                     </div>
 
-                    <button type="submit" href="" class="btn btn-primary btn-block btn-lg">سجل الآن</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitBtn">سجل الآن</button>
+                    <p id="msg" style="text-align: center; margin-top: 10px; font-weight: bold;"></p>
                 </form>
             </div>
         </div>
     </section>
+
     <!-- Success Stories Section -->
     <!-- Hero Section -->
     <section class="hero" id="hero">
@@ -734,6 +733,66 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <script>
+        // رابط السكربت بتاعك
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwYUjrS08dDuH_7ndNljFWkXTyvkFzX424xbo9FIt8PpV6s_5oY5xU5e3yabSoSN7BK/exec';
+
+        const form = document.forms['submit-to-google-sheet'];
+        const msg = document.getElementById("msg");
+        const submitBtn = document.getElementById("submitBtn");
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+
+            // تغيير شكل الزرار
+            submitBtn.innerHTML = "جاري الإرسال...";
+            submitBtn.disabled = true;
+
+            // 1. تجميع البيانات
+            let data = new FormData(form);
+
+            // 2. تظبيط المنصات (Checkboxes) عشان تروح في خلية واحدة
+            let platformValues = [];
+            document.querySelectorAll('.platform-check:checked').forEach((checkbox) => {
+                platformValues.push(checkbox.value);
+            });
+            // ضيفنا المنصات للبيانات باسم 'Platform' مطابق للشيت
+            data.append('Platform', platformValues.join(', '));
+
+            // 3. تحويل البيانات لصيغة يفهمها الشيت (مهم جداً)
+            const params = new URLSearchParams();
+            for (const pair of data.entries()) {
+                // بنستبعد الـ keys الفاضية لو احتجنا، بس هنا هناخد كله
+                params.append(pair[0], pair[1]);
+            }
+
+            // 4. الإرسال الفعلي
+            fetch(scriptURL, { method: 'POST', body: params })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.result === 'success') {
+                        msg.innerHTML = "تم التسجيل بنجاح! هنتواصل معاك قريب.";
+                        msg.style.color = "green";
+                        form.reset(); // فضي الفورم
+                    } else {
+                        msg.innerHTML = "حصل خطأ في السكربت!";
+                        msg.style.color = "red";
+                        console.error('Script Error:', result);
+                    }
+                    submitBtn.innerHTML = "سجل الآن";
+                    submitBtn.disabled = false;
+                    setTimeout(() => { msg.innerHTML = ""; }, 5000);
+                })
+                .catch(error => {
+                    msg.innerHTML = "فشل الاتصال! تأكد من النت.";
+                    msg.style.color = "red";
+                    console.error('Error!', error.message);
+                    submitBtn.innerHTML = "سجل الآن";
+                    submitBtn.disabled = false;
+                });
+        });
+    </script>
 </body>
 
 </html>
