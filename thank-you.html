@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شكراً لك - The Pro English</title>
+
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesthankyou.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <!-- Navbar -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fa-solid fa-graduation-cap"></i> The Pro English
+            </div>
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="index.html#hero">الرئيسية</a></li>
+                    <li><a href="index.html#features">المميزات</a></li>
+                    <li><a href="index.html#faq">الأسئلة الشائعة</a></li>
+                    <li><a href="index.html#carousel">قصص النجاح</a></li>
+                </ul>
+            </nav>
+            <a href="index.html#register" class="btn btn-primary btn-sm">سجل الآن </a>
+            <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="main-section">
+        <div class="thank-you-card">
+            <h1>Thank you!</h1>
+            <h2>شكراً لك 🎉</h2>
+            <p>شكراً لتسجيلك معنا <br>انتظر مكالمتنا ليك في أقرب وقت..</p>
+
+            <a href="index.html" class="btn-return">العودة للرئيسية</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2025 The Pro English. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Mobile Menu Toggle
+        const mobileBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileBtn) {
+            mobileBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = mobileBtn.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
